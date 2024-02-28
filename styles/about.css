@@ -1,0 +1,11 @@
+.about-content {
+    display: flex;
+    text-align: justify;
+    padding: 30px 40px;
+}
+
+.about-list ol {
+    justify-content: center;
+    text-align: justify;
+    padding: 30px 40px;
+}

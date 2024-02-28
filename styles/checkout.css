@@ -1,0 +1,29 @@
+.page-main {
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+#clear-cart {
+    background-color: rgb(11, 135, 58);
+    border-radius: 10px;
+    color: aliceblue;
+    justify-content: center;
+    padding: 10px;
+    margin-right: 20px;
+}
+
+#cart-items-display {
+    padding: 30px;
+}
+.cart-counter-wrapper {
+    padding: 15px;
+}
+
+#checkout-btn {
+    cursor: pointer;
+    background-color: rgb(223, 25, 107);
+    border-radius: 10px;
+    color: aliceblue;
+    font-size: 20px;
+    padding: 10px 30px;
+}
