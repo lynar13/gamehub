@@ -8,7 +8,10 @@ const horrorGenreButton = document.getElementById('genre-horror');
 const sportGenreButton = document.getElementById('genre-sport');
 const genreClearButton = document.getElementById('genre-clear');
 
+
 let chosenGenre = '';
+
+
 
 // 1. Create buttons for the genres
 // 2. Set the genre variable based on what was clicked
@@ -46,6 +49,10 @@ function createCart() {
   }
 }
 
+
+
+// Generate HTML Dynamically
+
 function generateGameHtml(game) {
   const gameWrapper = document.createElement('div');
   gameWrapper.classList.add('game-wrapper');
@@ -82,9 +89,11 @@ function generateGameHtml(game) {
   const gameDiscountedPrice = document.createElement('div');
   gameDiscountedPrice.textContent = game.discountedPrice;
 
-  const singleProduct = document.createElement('button');
-  singleProduct.textContent = 'View Detail';
-  singleProduct.classList.add('single-product');
+  const viewDetails = document.createElement('button');
+  viewDetails.textContent ='View Details';
+  viewDetails.classList.add('product-details');
+
+  viewDetails.addEventListener('click', showGameDetails);
   
   const gameBuyButton = document.createElement('button');
   gameBuyButton.textContent = 'Add to cart';
@@ -95,11 +104,13 @@ function generateGameHtml(game) {
   });
 
   gamePriceContainer.append(priceText, gamePrice, discountedText, gameDiscountedPrice);
-  gameContainer.append(gameImage, heading, description, genre, gamePriceContainer, gameBuyButton, singleProduct, );
+  gameContainer.append(gameImage, heading, description, genre, gamePriceContainer, gameBuyButton, viewDetails);
   gameWrapper.appendChild(gameContainer);
 
   return gameWrapper;
 }
+
+
 
 // 1. Get the games
 // 2. We need to get the filter criteria i.e. "category"
@@ -114,7 +125,7 @@ function displayGames(games) {
         return true;
       }
     })
-    .forEach((game) => {
+    .forEach((game, index) => {
       const gameHtml = generateGameHtml(game);
       gamesDisplayContainer.appendChild(gameHtml);
     });
@@ -125,6 +136,7 @@ async function renderHomePage() {
   const games = responseData.data;
   displayGames(games);
 }
+
 
 async function main() {
   createCart();

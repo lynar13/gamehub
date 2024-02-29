@@ -6,9 +6,8 @@
     <link rel="stylesheet" href="styles/common.css" />
     <link rel="stylesheet" href="./styles/home.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+    <link rel="stylesheet" href="./styles/game.css">
     <script type="module" src="./home.js"></script>
-    <script src="product.js"></script>
-    <script src="/sproduct.js"></script>
     <title>Home</title>
   </head>
   <body>
@@ -19,6 +18,7 @@
         <nav class="nav-list">
             <ul>
                 <li><a class="active" href="/index.html">Home</a></li>
+                <li><a href="./game/"></a>Game</li>
                 <li><a href="./about/">About</a></li>
                 <li><a href="./contact/">Contact</a></li>
                 <li><a href="./checkout/"><span class="material-symbols-outlined">
@@ -77,9 +77,10 @@
             <button id="genre-sport">Sport</button>
             <button id="genre-clear">Clear filter</button>
             
-            <div id="games-display"> 
-              <button class="single-product" id="game-details" onclick="viewDetails()"></button>
-            </div>    
+            <div id="games-display">
+              <a href="sproduct/"><button class="product-details" data-index="${index}" class="filterable"></button></a>  
+            </div> 
+            
         </div>
         
       </main>
@@ -90,8 +91,9 @@
         <a href="./privacy/index.html">Privacy Policy</a>
         <a href="/terms/index.html">Terms and Conditions</a>      
     </footer>
-   
-    <script src="/slideshow.js"></script>
-    <script src="/mobile.js"></script>
+
+    <script src="slideshow.js"></script>
+    <script src="mobile.js"></script>
+
   </body>
 </html>

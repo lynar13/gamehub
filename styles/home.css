@@ -203,7 +203,7 @@ span {
     padding-top: 40px;
 }
 .filterable button {
-  cursor: pointer;
+    cursor: pointer;
     font-size: 20px;
     border-radius: 10px;
     color: aliceblue;
@@ -218,9 +218,7 @@ span {
 .game-image {
   height: 300px;
 }
-.game-image:hover {
-  cursor: pointer;
-}
+
 .game-description {
   justify-content: center;
   max-width: 250px;
@@ -232,6 +230,10 @@ span {
 .game-genre {
   color: rgb(223, 12, 160);
   margin-bottom: 10px;
+}
+
+#view-details {
+  background-color: rgb(223, 25, 107);;
 }
   
   /* Footer section */
