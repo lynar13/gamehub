@@ -218,6 +218,9 @@ span {
 .game-image {
   height: 300px;
 }
+.game-image:hover {
+  cursor: pointer;
+}
 
 .game-description {
   justify-content: center;
