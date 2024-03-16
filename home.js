@@ -1,6 +1,8 @@
-import { API_GAMES_URL } from './scripts/constants.mjs';
+import { API_GAMES_URL} from './scripts/constants.mjs';
 import { addToCart, clearCart } from './scripts/utils/cart.mjs';
 import { doFetch } from './scripts/utils/doFetch.mjs';
+
+document.addEventListener('DOMContentLoaded', () => {
 
 const actionGenreButton = document.getElementById('genre-action');
 const adventureGenreButton = document.getElementById('genre-adventure');
@@ -63,18 +65,17 @@ function generateGameHtml(game) {
   const gameImage = document.createElement("img");
   gameImage.classList.add("game-image");
 	gameImage.src = game.image.url;
-  
-  
+
   const heading = document.createElement('h3');
   heading.textContent = game.title;
 
-  const description = document.createElement('p');
-  description.textContent = game.description;
-  description.classList.add('game-description');
+  const ageRating = document.createElement('h4');
+  ageRating.textContent = game.ageRating;
 
   const genre = document.createElement('div');
   genre.textContent = game.genre;
   genre.classList.add('game-genre');
+  
   const gamePriceContainer = document.createElement('div');
 
   const priceText = document.createElement('h5');
@@ -88,6 +89,7 @@ function generateGameHtml(game) {
 
   const gameDiscountedPrice = document.createElement('div');
   gameDiscountedPrice.textContent = game.discountedPrice;
+
   
   const gameBuyButton = document.createElement('button');
   gameBuyButton.textContent = 'Add to cart';
@@ -97,14 +99,25 @@ function generateGameHtml(game) {
     addToCart(game);
   });
 
+  
+  const viewGameDetailsButton = document.createElement('button');
+  viewGameDetailsButton.textContent = 'View Details';
+  viewGameDetailsButton.classList.add('view-details-button'); 
+  
+  // Add click event listener to the button
+  viewGameDetailsButton.addEventListener('click', () => {
+  
+    // Redirect to the game details page with the gameId
+    window.location.href = `game.html?gameId=${game.id}`;
+  });
+
   gamePriceContainer.append(priceText, gamePrice, discountedText, gameDiscountedPrice);
-  gameContainer.append(gameImage, heading, description, genre, gamePriceContainer, gameBuyButton);
+  gameContainer.append(gameImage, heading, ageRating, genre, gamePriceContainer, gameBuyButton, viewGameDetailsButton);
   gameWrapper.appendChild(gameContainer);
 
   return gameWrapper;
 }
-
-
+  
 
 // 1. Get the games
 // 2. We need to get the filter criteria i.e. "category"
@@ -119,7 +132,7 @@ function displayGames(games) {
         return true;
       }
     })
-    .forEach((game, index) => {
+    .forEach((game) => {
       const gameHtml = generateGameHtml(game);
       gamesDisplayContainer.appendChild(gameHtml);
     });
@@ -139,38 +152,8 @@ async function main() {
 
 main();
 
-const gameImages = document.querySelectorAll('.game-image');
+});
 
-const apiEndPOint = "https://v2.api.noroff.dev/gamehub/14a20cf0-c230-45dd-a47f-7d0e76b73e3f";
 
-async function fetchGameDetails(gameId) {
-  try {
-    const response = await fetch(`${apiEndPOint}/${gameId}`);
-    if (!response.ok) {
-      throw new Error(`ÀPI request failed with status ${response.status}`);
-    }
-    const gameData = await response.json();
-    return gameData;
-  }catch (error) {
-    console.error("Error fetching game details:", error);
-  }
-}
-
-gameImages.forEach((image) => {
-  image.addEventListener("click", async () => {
-    try {
-      const gameId = image.dataset.gameId;
-      const gameDetails = await fetchGameDetails(gameId);
-      const gamesPageUrl = gameDetails.API_GAMES_URL;
-      if (gameId) {
-        window.location.href = API_GAMES_URL;
-      } else {
-        console.error("Product page URL not found in API response");
-      }
-    } catch (error) {
-      console.error("Error handling image click:", error);
-    }
-  });
-})
 
 

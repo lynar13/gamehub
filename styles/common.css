@@ -42,9 +42,19 @@ body {
   width: 200px;
   height: 400px;
 }
-.game-price-container div {
+.game-price-container {
   color: rgb(41, 39, 39);
-  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.game-price {
+  color: green;
+  text-decoration: line-through;
+}
+
+.game-discounted-price {
+  color: red;
 }
 
 .game-buy-button {
@@ -98,3 +108,4 @@ body {
 .list ul {
   padding: 20px;
 }
+

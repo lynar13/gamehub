@@ -1,8 +1,8 @@
 const bar = document.getElementById('bar');
-const nav = document.getElementsByClassName('nav-list');
+const nav = document.querySelector('.nav-list'); // Use querySelector to select the first element with the class 'nav-list'
 
-if (bar) {
-    bar.addEventListener('click', () => {
-        nav.classlist.add('active');
-    });
+if (bar && nav) { // Check if both bar and nav elements exist
+  bar.addEventListener('click', () => {
+    nav.classList.add('active');
+  });
 }

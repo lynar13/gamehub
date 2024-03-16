@@ -1,12 +1,4 @@
-// Responsive website
-const bar = document.getElementById('bar');
-const nav = document.getElementsByClassName('.nav-list');
 
-if (bar) {
- bar.addEventListener('click', () => {
-   nav.classList.add('active');
- })
-}
 
 let slideIndex = 1;
 showSlides(slideIndex);

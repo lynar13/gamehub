@@ -19,17 +19,24 @@ function generateHtmlForGame(game) {
   const gameTitle = document.createElement('h3');
   gameTitle.textContent = game.title;
 
+  const quantityTextContainer = document.createElement('div');
+  quantityTextContainer.classList.add('quantity-text-container');
+
   const gameQuantity = document.createElement('div');
   gameQuantity.textContent = 'Quantity: ' + game.quantity;
+  gameQuantity.classList.add('game-quantity');
 
   const gamePrice = document.createElement('div');
   gamePrice.textContent = 'Price: ' + game.price;
+  gamePrice.classList.add('game-price-cart');
 
   const gamePriceTotal = document.createElement('div');
   gamePriceTotal.textContent =
     'Total: ' + formatCurrency(game.price * game.quantity);
+  gamePriceTotal.classList.add('price-total');
 
   const quantityAdjustmentContainer = document.createElement('div');
+  quantityAdjustmentContainer.classList.add('quantity-adjust');
 
   const incrementButton = document.createElement('button');
   incrementButton.textContent = '+';
@@ -49,6 +56,7 @@ function generateHtmlForGame(game) {
 
   gameWrapper.append(
     gameTitle,
+    quantityTextContainer,
     gameQuantity,
     gamePrice,
     gamePriceTotal,
@@ -74,7 +82,7 @@ function displayCartItems() {
 // 4. Update the container with the right amount of items
 function displayCartCounter() {
   const cartCounterContainer = document.getElementById('cart-counter');
-  console.log(cartCounterContainer);
+  
   const totalNumberOfItems = getTotalNumberOfItemsInCart();
   cartCounterContainer.textContent = totalNumberOfItems;
 }
