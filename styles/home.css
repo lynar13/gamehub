@@ -360,4 +360,8 @@ span {
       padding-left: 20px;
     }
     
+    #game-details-container {
+      display: flex;
+      flex-direction: column;
+    }
   }
